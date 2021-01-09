@@ -35,10 +35,15 @@ const initializeMedia = () => {
         };
     }
 
-    // Load all models with Promise.all() and finally call the function startvideo !!!
-
-    // Copy this code (line 42 till 52) to a new function with the name: startvideo
-
+    Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri("/src/models"),
+        faceapi.nets.faceLandmark68Net.loadFromUri("/src/models"),
+        faceapi.nets.faceRecognitionNet.loadFromUri("/src/models"),
+        faceapi.nets.faceExpressionNet.loadFromUri("/src/models"),
+        faceapi.nets.ageGenderNet.loadFromUri("/src/models")
+    ]).then(startVideo);
+};
+const startVideo = () => {
     navigator.mediaDevices.getUserMedia({video: {facingMode: 'user'}, audio: false})
         .then(stream => {
             videoPlayer.srcObject = stream;
@@ -50,7 +55,7 @@ const initializeMedia = () => {
         .catch(error => {
             console.log(error);
         });
-};
+}
 
 const openCreatePostModal = () => {
     setTimeout(() => createPostArea.style.transform = 'translateY(0)', 1);

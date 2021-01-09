@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="src/css/app.css">
     <link rel="stylesheet" href="src/css/feed.css">
 
-    <!-- ADD stylesheets here ! -->
+    <link rel="stylesheet" href="src/css/facedetection.css">
 
      <!--<link rel="manifest" href="manifest.json">-->
      <link rel="manifest" id="manifestPlaceholder">
@@ -55,11 +55,15 @@
         </div>
         <main class="mdl-layout__content mat-typography">
             <div id="create-post">
-
-                <!-- ADD <video> tag here ! -->
-                <!-- ADD <container-faceDetection> here ! -->
-                <!-- ADD <canvas> tag here ! -->
-                <!-- ADD <result-container> here ! -->
+                <video id="player" autoplay></video>
+                <div class="container-faceDetection">
+                </div>
+                <canvas id="canvas" width="320px" height="240px"></canvas>
+                <div class="result-container">
+                    <div id="emotion">Emotion</div>
+                    <div id="gender">Gender</div>
+                    <div id="age">Age</div>
+                </div>
 
                 <br/>
                 <button
@@ -143,7 +147,8 @@
 <script src="src/js/feed.js"></script>
 <script src="src/js/languages.js"></script>
 
-<!-- ADD <scripts> here ! -->
+<script src="src/lib/face-api.min.js"></script>
+<script src="src/js/facedetection.js"></script>
 
 </body>
 </html>
